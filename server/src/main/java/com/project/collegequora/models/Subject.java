@@ -21,5 +21,5 @@ public class Subject {
  @Id
  private String sub_id;
  private String sub_name;
- private Department dept_id;
+ private String dept_id;
 }
