@@ -18,6 +18,6 @@ import lombok.ToString;
 @Document(collection="Role")
 public class Role {
     @Id
-    private int role_id;
+    private String role_id;
     private String role_name;
 }

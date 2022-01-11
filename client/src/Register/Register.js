@@ -47,16 +47,16 @@ export default class Register extends React.Component{
 				</div>
                 
 				<div class="form-row">
-					<input type="text" ref={c=>this.user_name=c} name="user_name" id="user_name" class="input-text" placeholder="Hospital Name"  />
+					<input type="text" ref={c=>this.user_name=c} name="user_name" id="user_name" class="input-text" placeholder="User Name"  />
 				</div>
                 <div class="form-row">
-					<input type="text" ref={c=>this.email=c} name="email" id="email" class="input-text" placeholder="Address" required/>
+					<input type="text" ref={c=>this.email=c} name="email" id="email" class="input-text" placeholder="Email" required/>
 				</div>
 				<div class="form-row">
 					<input type="password" ref={c=>this.password=c} name="password" id="password" class="input-text" placeholder="Password" required/>
 				</div>
                 <div class="form-row">
-					<input type="text" ref={c=>this.dept_id=c} name="dept_id" id="" class="input-text" placeholder="Password" required/>
+					<input type="text" ref={c=>this.dept_id=c} name="dept_id" id="" class="input-text" placeholder="Department" required/>
 				</div>
 				<b style={{color:"red"}}>{this.state.regmsg}</b>
 				<div class="form-row-last">
