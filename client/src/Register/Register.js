@@ -34,33 +34,38 @@ export default class Register extends React.Component{
     render(){
         return(
             <div>
-                <div class="form-v7">
-	    <div class="page-content">
-		<div class="form-v7-content">
-			<div class="form-left">
+                <div className="form-v7">
+	    <div className="page-content">
+		<div className="form-v7-content">
+			<div className="form-left">
 				<img src="" alt="form" width="500px" height="700px"/>
 			</div>
 			<form class="form-detail"  onSubmit={this.register} action="">
 				<h2>User Registration</h2>
 				<div class="form-row">
-					<input type="text" ref={c=>this.role_type=c} name="role_type" id="role_type" class="input-text" placeholder="Select Your Role" required/>
+
+				<input type="text" ref={c=>this.role_type=c} name="role_type" id="role_type" className="input-text" placeholder="Select Your Role" required/>
+                   
 				</div>
                 <div class="form-row">
-					<input type="text" ref={c=>this.user_name=c} name="user_name" id="user_name" class="input-text" placeholder="User Name"  />
+					<input type="text" ref={c=>this.user_name=c} name="user_name" id="user_name" className="input-text" placeholder="User Name"  />
 				</div>
                 <div class="form-row">
-					<input type="text" ref={c=>this.email=c} name="email" id="email" class="input-text" placeholder="Enter your E mail" required/>
+					<input type="text" ref={c=>this.email=c} name="email" id="email" className="input-text" placeholder="Enter your E mail" required/>
 				</div>
 				<div class="form-row">
-					<input type="password" ref={c=>this.password=c} name="password" id="password" class="input-text" placeholder="Password" required/>
+					<input type="password" ref={c=>this.password=c} name="password" id="password" className="input-text" placeholder="Password" required/>
 				</div>
                 <div class="form-row">
-					<input type="text" ref={c=>this.dept_id=c} name="dept_id" id="dept_id" class="input-text" placeholder="Enter your department" required/>
+					<input type="text" ref={c=>this.dept_id=c} name="dept_id" id="dept_id" className="input-text" placeholder="Enter your department" required/>
 				</div>
 				<b style={{color:"red"}}>{this.state.regmsg}</b>
 				<div class="form-row-last">
                 <button style={{borderRadius: '9px', border: 'px solid' ,width:'250px' ,height:'50px' }} type="submit" name="register" class="register" value="Register"> Submit</button>
-				</div>
+                </div>
+                <div>
+                <a href='/login'>Not a user?</a>
+                </div>
 			</form>
 		</div>
 	</div>
