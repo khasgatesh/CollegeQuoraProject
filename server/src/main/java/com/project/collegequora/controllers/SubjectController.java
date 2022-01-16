@@ -1,11 +1,12 @@
 package com.project.collegequora.controllers;
 
 
-import com.project.collegequora.Response;
+import com.project.collegequora.models.Answer;
 import com.project.collegequora.models.Question;
 import com.project.collegequora.repository.AnswerRepository;
 import com.project.collegequora.repository.QuestionRepository;
 import com.project.collegequora.repository.SubjectRepository;
+import com.project.collegequora.response.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -31,16 +32,7 @@ public class SubjectController {
     @Autowired
     AnswerRepository answerRepository;
 
-   /* @PostMapping("/postquestion")
-    public Question createquestion(@RequestBody Question question){
-        try {
-        questionRepository.save(question);
-        return question;
-    }catch(Exception ex) {
-        System.out.println(ex);
-        return null;
-    }
-}*/
+   
 @PostMapping("/postquestion")
     public void createquestion(@RequestBody Question question){
         questionRepository.save(question);
@@ -58,6 +50,14 @@ public class SubjectController {
         return new Response(200,"Answer fetched",answerRepository.findByQuesId(quesId));
     }
 
+
+
+
+    @PostMapping("/postanswer/{quesId}")
+    public void createanswer(@RequestBody Answer answer){
+        answerRepository.save(answer);
+        
+}
   
 
    
@@ -71,7 +71,16 @@ public class SubjectController {
                     return questionRepository.save(question);
                 }).orElseThrow(() -> new ResourceNotFoundException("Question not found with id " + quesId));
                 }*/
-
+/* @PostMapping("/postquestion")
+    public Question createquestion(@RequestBody Question question){
+        try {
+        questionRepository.save(question);
+        return question;
+    }catch(Exception ex) {
+        System.out.println(ex);
+        return null;
+    }
+}*/
     }
     
 

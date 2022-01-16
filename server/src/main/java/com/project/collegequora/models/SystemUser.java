@@ -23,8 +23,14 @@ public class SystemUser  {
 	private String email;
 	private String password;	
 	private String roles;
-	private Boolean isActive;
+	private boolean  active;
 	private String deptId;
+	private String roleId;
+	
+	}
+
+
 	
     
-}
+    
+    

@@ -1,4 +1,4 @@
-package com.project.collegequora;
+package com.project.collegequora.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

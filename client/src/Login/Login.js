@@ -1,6 +1,13 @@
 import React from "react";
-import "./Login.css"
+import "./Login.css";
+import Store from '../Action/Store';
+import {ACTION_USER_LOGIN} from '../Action/UserAction'
 import { Navigate } from 'react-router-dom';
+
+import {
+  GoogleLoginButton,
+  FacebookLoginButton
+} from "react-social-login-buttons";
 export default class Login extends React.Component{
 
     constructor(){
@@ -27,16 +34,29 @@ export default class Login extends React.Component{
             console.log(data)
             this.setState({regmsg:data.data})
             if(data.msg===200){
-            this.setState({loginstatus:true})
-            }
-            
-        });;
-        console.log(this.state.loginstatus)
-        console.log(ob)
-        event.preventDefault()
-    }
+              
+                Store.dispatch({...ACTION_USER_LOGIN,payload:{
+                   email : data.email,
+                   token:data.token
+
+               }}) 
+               this.setState({loginstatus:true})
+           }else
+           this.setState({loginmsg:data.msg})
+           
+       });;
+       console.log(this.state.loginstatus)
+       console.log(ob)
+       
+       event.preventDefault()
+   }
 
     render(){
+
+      if(this.state.loginstatus){
+        return(
+        <Navigate to={"/home"}/> )
+    }
         return(
             <div>
                 <section className="h-100 bg-dark">
@@ -77,6 +97,17 @@ export default class Login extends React.Component{
                 <div>
                 <a href='/register'>Not a user?</a>
                 </div>
+
+                <div className="socialMediaButtons">
+                  <div className="googleButton">
+                    <GoogleLoginButton onClick={() => alert("Login")} />
+                  </div>
+
+                  <div className="instagramButton">
+                    <FacebookLoginButton onClick={() => alert("Login")} />
+                  
+                  </div>
+                  </div>
 
               </div>
             </div>

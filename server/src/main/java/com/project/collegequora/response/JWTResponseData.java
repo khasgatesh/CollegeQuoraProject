@@ -5,13 +5,20 @@ public class JWTResponseData {
 	private String token;
 	private String msg;
 	
+	public Object getData() {
+		return data;
+	}
+	public void setData(Object data) {
+		this.data = data;
+	}
+	private Object data;
 	
-	
-	public JWTResponseData(boolean status, String token, String msg) {
+	public JWTResponseData(boolean status, String token, String msg,Object data) {
 		super();
 		this.status = status;
 		this.token = token;
 		this.msg = msg;
+		this.data=data;
 	}
 	public boolean isStatus() {
 		return status;

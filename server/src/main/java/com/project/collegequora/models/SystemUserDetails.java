@@ -4,21 +4,12 @@ package com.project.collegequora.models;
 
 import java.util.Arrays;
 import java.util.Collection;
-import com.project.collegequora.repository.SubjectRepository;
-import com.project.collegequora.repository.SystemUserRepository;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 public class SystemUserDetails implements UserDetails {
-
-	@Autowired
-	SystemUserRepository systemUserRepository;
-
-	@Autowired
-	SubjectRepository subjectRepository;
 
 	private static final long serialVersionUID = 1L;
 	
@@ -27,12 +18,16 @@ public class SystemUserDetails implements UserDetails {
 	public SystemUserDetails(SystemUser user) {
 		this.user = user;
 	}
+	public SystemUser getUser() {
+		return user;
+	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 
-		SimpleGrantedAuthority authority = new SimpleGrantedAuthority(user.getRoles());
-		return Arrays.asList(authority);
+		//SimpleGrantedAuthority authority = new SimpleGrantedAuthority(user.getRoles());
+		//return Arrays.asList(authority);
+		return null;
 	}
 
 	@Override
@@ -45,13 +40,16 @@ public class SystemUserDetails implements UserDetails {
 	public String getUsername() {		
 		return user.getName();
 	}
-	
+	 
 	public String getUserId() {
 		return user.getUserId();
 	}
 	
 	public String getUserType() {
 		return user.getRoles();
+	}
+	public boolean active(){
+		return user.isActive();
 	}
 
 	@Override
@@ -66,6 +64,8 @@ public class SystemUserDetails implements UserDetails {
 		return true;
 	}
 
+
+
 	@Override
 	public boolean isCredentialsNonExpired() {
 		// TODO Auto-generated method stub
@@ -75,11 +75,12 @@ public class SystemUserDetails implements UserDetails {
 	@Override
 	public boolean isEnabled() {
 		if(user!=null)
-			return user.getIsActive();
+			return true;
 		else
 			return false;
 	}
-	
 
 
 }
+
+

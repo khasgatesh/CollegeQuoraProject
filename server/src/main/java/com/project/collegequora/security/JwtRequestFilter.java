@@ -9,7 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.project.collegequora.models.SystemUser;
 import com.project.collegequora.models.SystemUserDetails;
-import com.project.collegequora.service.SystemUserService;
+import com.project.collegequora.repository.SystemUserRepository;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -30,7 +31,7 @@ import io.jsonwebtoken.ExpiredJwtException;
 public class JwtRequestFilter extends OncePerRequestFilter {
 
 	@Autowired
-	private SystemUserService systemUserService;
+	private SystemUserRepository systemUserRepository;
 
 	@Autowired
 	private JwtTokenUtil jwtTokenUtil;
@@ -70,7 +71,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 		if (userid != null && SecurityContextHolder.getContext().getAuthentication() == null) 
 		{
 			System.out.println("UI : " + userid);
-			SystemUser systemUser = this.systemUserService.getById(userid);
+			SystemUser systemUser = this.systemUserRepository.findById(userid).get();
 			SystemUserDetails userdetails = new SystemUserDetails(systemUser);
 
 			// if token is valid configure Spring Security to manually set authentication

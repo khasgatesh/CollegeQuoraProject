@@ -10,6 +10,19 @@ export default class Register extends React.Component{
             loginmsg : ''
         }
     }
+
+    verfication=()=>{
+      var ob = {
+        userId :this.userId.value,
+        roleName : this.roleName.value,
+        name:this.name.value,
+        email : this.email.value,
+        password: this.password.value,
+        deptId: this.deptId.value,
+      }
+
+
+  }
     register = (event)=>{
         var ob = {
             userId :this.userId.value,
@@ -77,8 +90,8 @@ export default class Register extends React.Component{
 
                     <select className="select" ref={c=>this.deptId=c}  id="form3Example1m1">
                       <option value="1">Department</option>
-                      <option value="2" ref={c=>this.deptId=c}>CSE</option>
-                      <option value="3" ref={c=>this.deptId=c}>ECE</option>
+                      <option value="CSE" ref={c=>this.deptId=c}>CSE</option>
+                      <option value="ECE" ref={c=>this.deptId=c}>ECE</option>
                     </select>
 
                   </div>

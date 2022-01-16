@@ -53,6 +53,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 				// dont authenticate this particular request
 				.authorizeRequests().antMatchers("/web/**").permitAll()
 //				.antMatchers("/web/register").permitAll()
+				.antMatchers("/addDept").permitAll()
+				.antMatchers("/addsub").permitAll()
 				.antMatchers("/patient/**").hasRole("ADMIN").
 				// all other requests need to be authenticated
 				anyRequest().authenticated().and();
