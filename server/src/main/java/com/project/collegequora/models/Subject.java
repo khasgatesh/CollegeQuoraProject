@@ -19,7 +19,7 @@ import lombok.ToString;
 public class Subject {
  
  @Id
- private String sub_id;
- private String sub_name;
- private String dept_id;
+ private String subId;
+ private String subName;
+ private String deptId;
 }

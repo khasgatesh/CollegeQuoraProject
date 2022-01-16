@@ -19,6 +19,6 @@ import lombok.ToString;
 public class Department {
  
  @Id
- private String dept_id;
- private String dept_name;
+ private String deptId;
+ private String deptName;
 }

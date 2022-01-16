@@ -17,7 +17,7 @@ export default class Login extends React.Component{
             password: this.password.value,
         }
         console.log(this.setState.loginstatus)
-        fetch(`http://localhost:8082/login`,{
+        fetch(`http://localhost:8082/web/login`,{
             method : 'POST',
             headers:{
                 "Content-Type" : "application/json"
@@ -39,31 +39,53 @@ export default class Login extends React.Component{
     render(){
         return(
             <div>
-                <div className="form-v7">
-	    <div className="page-content">
-		<div className="form-v7-content">
-			<div className="form-left">
-				<img src="" alt="form" width="500px" height="700px"/>
-			</div>
-			<form className="form-detail"  onSubmit={this.login} action="">
-				<h2>User Login</h2>
-                <div className="form-row">
-					<input type="text" ref={c=>this.email=c} name="email" id="email" className="input-text" placeholder="Enter your E mail" required/>
-				</div>
-				<div className="form-row">
-					<input type="password" ref={c=>this.password=c} name="password" id="password" className="input-text" placeholder="Password" required/>
-				</div>
-				<b style={{color:"red"}}>{this.state.loginmsg}</b>
-				<div className="form-row-last">
-                <button style={{borderRadius: '9px', border: 'px solid' ,width:'250px' ,height:'50px' }} type="submit" name="register" className="register" value="Register"> Submit</button>
+                <section className="h-100 bg-dark">
+  <div className="container py-5 h-100">
+    <div className="row d-flex justify-content-center align-items-center h-100">
+      <div className="col">
+        <div className="card card-registration my-4">
+          <div className="row g-0">
+            <div className="col-xl-6 d-none d-xl-block">
+              <img
+                src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img4.webp"
+                alt="Sample photo"
+                className="img-fluid"
+              />
+            </div>
+            <div className="col-xl-6">
+              <div className="card-body p-md-5 text-black">
+                <h3 className="mb-5 text-uppercase">User Login</h3>
+
+                <div className="form-outline mb-4">
+                <input type="text" ref={c=>this.email=c} name="email" id="form3Example1m1" className="form-control form-control-lg" placeholder="Enter your Email" required/>
+                  <label className="form-label" htmlFor="form3Example9">Email</label>
                 </div>
+
+                <div className="form-outline mb-4">
+                <input type="password" ref={c=>this.password=c} name="password" id="form3Example1m1" className="form-control form-control-lg" placeholder="Enter your user name" required/>
+                  <label className="form-label" htmlFor="form3Example90">Password</label>
+                </div>
+
+                <b style={{color:"red"}}>{this.state.regmsg}</b>
+
+      
+                <div className="d-flex justify-content-end pt-3">
+                  <input onClick={(event)=> this.login(event)} type="submit" className="btn btn-warning btn-lg ms-2"/>
+                </div>
+                
+
                 <div>
-                <a href='/'>Already a user?</a>
+                <a href='/register'>Not a user?</a>
                 </div>
-			</form>
-		</div>
-	</div>
-</div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
             </div>
         )
     }

@@ -1,4 +1,5 @@
 import React from "react";
+import "./Register.css";
 
 export default class Register extends React.Component{
 
@@ -11,13 +12,14 @@ export default class Register extends React.Component{
     }
     register = (event)=>{
         var ob = {
-            role_type : this.role_type.value,
-            user_name:this.user_name.value,
+            userId :this.userId.value,
+            roleName : this.roleName.value,
+            name:this.name.value,
             email : this.email.value,
             password: this.password.value,
-            dept_id: this.dept_id.value,
+            deptId: this.deptId.value,
         }
-        fetch(`http://localhost:8082/register`,{
+        fetch(`http://localhost:8082/web/register`,{
             method : 'POST',
             headers:{
                 "Content-Type" : "application/json"
@@ -34,42 +36,84 @@ export default class Register extends React.Component{
     render(){
         return(
             <div>
-                <div className="form-v7">
-	    <div className="page-content">
-		<div className="form-v7-content">
-			<div className="form-left">
-				<img src="" alt="form" width="500px" height="700px"/>
-			</div>
-			<form class="form-detail"  onSubmit={this.register} action="">
-				<h2>User Registration</h2>
-				<div class="form-row">
+                <section className="h-100 bg-dark">
+  <div className="container py-5 h-100">
+    <div className="row d-flex justify-content-center align-items-center h-100">
+      <div className="col">
+        <div className="card card-registration my-4">
+          <div className="row g-0">
+            <div className="col-xl-6 d-none d-xl-block">
+              <img
+                src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img4.webp"
+                alt="Sample photo"
+                className="img-fluid"
+              />
+            </div>
+            <div className="col-xl-6">
+              <div className="card-body p-md-5 text-black">
+                <h3 className="mb-5 text-uppercase">User registration form</h3>
 
-				<input type="text" ref={c=>this.role_type=c} name="role_type" id="role_type" className="input-text" placeholder="Select Your Role" required/>
-                   
-				</div>
-                <div class="form-row">
-					<input type="text" ref={c=>this.user_name=c} name="user_name" id="user_name" className="input-text" placeholder="User Name"  />
-				</div>
-                <div class="form-row">
-					<input type="text" ref={c=>this.email=c} name="email" id="email" className="input-text" placeholder="Enter your E mail" required/>
-				</div>
-				<div class="form-row">
-					<input type="password" ref={c=>this.password=c} name="password" id="password" className="input-text" placeholder="Password" required/>
-				</div>
-                <div class="form-row">
-					<input type="text" ref={c=>this.dept_id=c} name="dept_id" id="dept_id" className="input-text" placeholder="Enter your department" required/>
-				</div>
-				<b style={{color:"red"}}>{this.state.regmsg}</b>
-				<div class="form-row-last">
-                <button style={{borderRadius: '9px', border: 'px solid' ,width:'250px' ,height:'50px' }} type="submit" name="register" class="register" value="Register"> Submit</button>
+                <div className="form-outline mb-4">
+                <input type="text" ref={c=>this.userId=c} name="user  Id" id="userId" className="form-control form-control-lg" placeholder="Enter your USN/Teacher ID" required/>
+                  <label className="form-label" htmlFor="form3Example8">User ID</label>
                 </div>
+
+                <div className="form-outline mb-4">
+                <input type="text" ref={c=>this.name=c} name="user name" id="userName" className="form-control form-control-lg" placeholder="Enter your user name" required/>
+                  <label className="form-label" htmlFor="form3Example8">User Name</label>
+                </div>
+
+                <div className="row">
+                  <div className="col-md-6 mb-4">
+                    
+                    <select className="select" ref={c=>this.roleName=c}  id="form3Example1m1">
+                      <option value="1">Role</option>
+                      <option value="STUDENT" ref={c=>this.roleName=c}>Student</option>
+                      <option value="TEACHER" ref={c=>this.roleName=c}>Teacher</option>
+                    </select>
+
+                  </div>
+                  <div className="col-md-6 mb-4">
+
+                    <select className="select" ref={c=>this.deptId=c}  id="form3Example1m1">
+                      <option value="1">Department</option>
+                      <option value="2" ref={c=>this.deptId=c}>CSE</option>
+                      <option value="3" ref={c=>this.deptId=c}>ECE</option>
+                    </select>
+
+                  </div>
+                </div>
+
+                <div className="form-outline mb-4">
+                <input type="text" ref={c=>this.email=c} name="email" id="form3Example1m1" className="form-control form-control-lg" placeholder="Enter your Email" required/>
+                  <label className="form-label" htmlFor="form3Example9">Email</label>
+                </div>
+
+                <div className="form-outline mb-4">
+                <input type="password" ref={c=>this.password=c} name="password" id="form3Example1m1" className="form-control form-control-lg" placeholder="Enter your user name" required/>
+                  <label className="form-label" htmlFor="form3Example90">Password</label>
+                </div>
+
+                <b style={{color:"red"}}>{this.state.regmsg}</b>
+
+      
+                <div className="d-flex justify-content-end pt-3">
+                  <input onClick={(event)=> this.register(event)} type="submit" className="btn btn-warning btn-lg ms-2"/>
+                </div>
+                
+
                 <div>
-                <a href='/login'>Not a user?</a>
+                <a href='/login'>Already a user?</a>
                 </div>
-			</form>
-		</div>
-	</div>
-</div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
             </div>
         )
     }

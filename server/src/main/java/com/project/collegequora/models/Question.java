@@ -17,10 +17,10 @@ import lombok.ToString;
 @Document(collection="Question")
 public class Question {
  @Id
- private String ques_id;
+ private String quesId;
  private String question;
- private String ques_date;
- private boolean ques_state;
- private Subject sub_id;
- private User user_id;  
+ private String quesDate;
+ private boolean questate;
+ private String subId;
+ private String userId;  
 }

@@ -1,5 +1,7 @@
 package com.project.collegequora.models;
 
+import java.util.Date;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -18,9 +20,10 @@ import lombok.ToString;
 @Document(collection="Answer")
 public class Answer {
  @Id
- private String ans_id;
+ private String ansId;
  private String answer;
- private String ans_date;
- private User user_id;
+ private Date ansDate;
+ private String userId;
+ private String quesId;
  
 }

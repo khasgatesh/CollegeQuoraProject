@@ -1,44 +1,79 @@
 package com.project.collegequora.controllers;
 
-import java.util.List;
 
 import com.project.collegequora.Response;
-import com.project.collegequora.models.Subject;
+import com.project.collegequora.models.Question;
+import com.project.collegequora.repository.AnswerRepository;
+import com.project.collegequora.repository.QuestionRepository;
 import com.project.collegequora.repository.SubjectRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+
 
 @CrossOrigin
+
 @RestController
 public class SubjectController {
+
     @Autowired
     SubjectRepository subjectRepository;
 
-    @PostMapping("/addSubject")
-    public Response addDepartment(@RequestBody Subject subject)
-    {
-        if(subjectRepository.count()>0){
-            List<Subject> data = subjectRepository.findAll();
-            for(Subject sub: data){
-                if(sub.getDept_id().equals(subject.getDept_id())){
-                    
-                    return new Response(400,"Subject Id Already exists",sub);
-                }
-            }
-        }   
-        subjectRepository.save(subject);
-        return new Response(200,"Subject saved Successfully", "");
+    @Autowired
+    QuestionRepository questionRepository;
+
+    @Autowired
+    AnswerRepository answerRepository;
+
+   /* @PostMapping("/postquestion")
+    public Question createquestion(@RequestBody Question question){
+        try {
+        questionRepository.save(question);
+        return question;
+    }catch(Exception ex) {
+        System.out.println(ex);
+        return null;
+    }
+}*/
+@PostMapping("/postquestion")
+    public void createquestion(@RequestBody Question question){
+        questionRepository.save(question);
+        
+}
+
+    @GetMapping("/getquestion/{subId}")
+    public Response getallques(@PathVariable String subId) {
+        return new Response(200,"question fetched",questionRepository.findAllBySubId(subId));
+        
     }
 
-    @GetMapping("/findSubjects")
-    public Response findUser()
-    {
-        List<Subject> sub=subjectRepository.findAll();
-        return new Response(200,"Fetched successfully", sub);
+    @GetMapping("/answer/{quesId}")
+    public Response getanswer(@PathVariable String quesId){
+        return new Response(200,"Answer fetched",answerRepository.findByQuesId(quesId));
     }
-}
+
+  
+
+   
+   
+    /*@PutMapping("/questions/{quesId}")
+    public Question updateQuestion(@PathVariable String quesId,
+                                   @Validated @RequestBody Question questionRequest) {
+        return questionRepository.findByquesId(quesId)
+                .map( question -> {
+                    question.setDescription(questionRequest.getquestion());
+                    return questionRepository.save(question);
+                }).orElseThrow(() -> new ResourceNotFoundException("Question not found with id " + quesId));
+                }*/
+
+    }
+    
+
+    
+
