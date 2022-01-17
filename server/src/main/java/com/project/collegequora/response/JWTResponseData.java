@@ -20,7 +20,9 @@ public class JWTResponseData {
 		this.msg = msg;
 		this.data=data;
 	}
-	public boolean isStatus() {
+	public JWTResponseData() {
+    }
+    public boolean isStatus() {
 		return status;
 	}
 	public void setStatus(boolean status) {

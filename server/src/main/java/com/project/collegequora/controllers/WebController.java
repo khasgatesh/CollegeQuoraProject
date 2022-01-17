@@ -1,5 +1,7 @@
 package com.project.collegequora.controllers;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import javax.mail.internet.MimeMessage;
@@ -14,6 +16,8 @@ import com.project.collegequora.service.SystemUserDetailsService;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -63,6 +67,7 @@ public class WebController
 	@Autowired
 	private UserDetailsService userDetailsService;
 
+
 	@PostMapping("/register")
 	public Response saveUser(@RequestBody SystemUser user) 
 	{
@@ -89,10 +94,31 @@ public class WebController
 			 if(newUser.isActive()){
 			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword()));
 			String datais=systemUserDetailsService.getuserEmail(user);
+			String obj =newUser.getRoleId();
 		
 			final String token = jwtTokenUtil.generateToken(newUser);
-
-			return ResponseEntity.ok(new JWTResponseData(true, token, "Login Successfully",datais));
+			//System.out.println("msg");
+			//JWTResponseData jwtResponseData=new JWTResponseData();
+			//jwtResponseData.setStatus(true);
+			//jwtResponseData.setToken(token);
+			//jwtResponseData.setMsg("Login Successful");
+			//List<String> dlist = new ArrayList<>();
+			//dlist.add(user.getRoleId());
+			//if(user.getRoleId().equals("STUDENT")){
+			//	dlist.add(user.getDeptId());
+			//}
+			//jwtResponseData.setData(dlist);
+			if(newUser.getRoleId().equals("STUDENT")){
+				String xo=newUser.getDeptId();
+				System.out.println(xo);
+			}else{
+				String od=newUser.getDeptId();
+				System.out.println(od);
+			}
+			
+			
+			return ResponseEntity.ok(new JWTResponseData(true, token, "Login Successfull",obj));
+			//return ResponseEntity.ok(jwtResponseData);
 			//subjectRepository.findAllByDeptId(user.getDeptId())));
 		 }else{
 			return ResponseEntity.ok(new JWTResponseData(false, "", "verify Email!!",""));
@@ -120,23 +146,6 @@ public class WebController
 	        messageHelper.setTo(email);
 	        messageHelper.setSubject("Verification Mail from CollegeQuora");
 	        messageHelper.setText("<b><a href=http://localhost:8082/web/vrifcation/"+email+">click </a></b>", true);
-	        javaMailSender.send(mimeMessage);
-			return true;
-		}catch(Exception ex) {
-			System.out.println(ex.getMessage());
-			return false;
-		}
-	}
-	private boolean SendVerifyMail(String name,String email,String hospitalid) 
-	{
-		try {
-			SimpleMailMessage msg = new SimpleMailMessage();
-			MimeMessage mimeMessage = javaMailSender.createMimeMessage();
-			MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage, false, "UTF-8");
-	        messageHelper.setFrom("prajwalsr1999@gmail.com");
-	        messageHelper.setTo(email);
-	        messageHelper.setSubject("Verification Mail from PatientWeb");
-	        messageHelper.setText("<b><a href=http://localhost:8080/Hospital/vrifcation/"+email+">click </a></b>", true);
 	        javaMailSender.send(mimeMessage);
 			return true;
 		}catch(Exception ex) {
