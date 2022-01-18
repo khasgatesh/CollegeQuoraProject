@@ -1,5 +1,6 @@
 import React from "react";
 import "./Register.css";
+import Navbar from "../Navbar/Navbar";
 
 export default class Register extends React.Component{
 
@@ -48,7 +49,7 @@ export default class Register extends React.Component{
 
     render(){
         return(
-            <div>
+            <div> <Navbar></Navbar>
                 <section className="h-100 bg-dark">
   <div className="container py-5 h-100">
     <div className="row d-flex justify-content-center align-items-center h-100">

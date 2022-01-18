@@ -3,6 +3,8 @@ import "./Login.css";
 import Store from '../Action/Store';
 import { ACTION_USER_LOGIN } from '../Action/UserAction'
 import { Navigate} from 'react-router-dom';
+import Navbar from "../Navbar/Navbar";
+import email from "../GlobalData/email";
 
 import {
   GoogleLoginButton,
@@ -60,16 +62,16 @@ export default class Login extends React.Component {
   render() {
     if(this.state.roleId === "STUDENT"){
       return(
-      <Navigate to = {"/register"}/> )
+      <Navigate to = {"/sdashboard"}/> )
     }
     else if(this.state.roleId === "TEACHER"){
       return(
-      <Navigate to ={"/"}/> )
+      <Navigate to ={"/tdashboard"}/> )
       }
 
 
     return (
-      <div>
+      <div> <Navbar></Navbar>
         <section className="h-100 bg-dark">
           <div className="container py-5 h-100">
             <div className="row d-flex justify-content-center align-items-center h-100">

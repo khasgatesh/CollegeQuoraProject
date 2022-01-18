@@ -1,8 +1,9 @@
 import React from "react";
 import Register from "./Register/Register";
 import Login from "./Login/Login";
-import Navbar from "./Navbar/Navbar";
 import Home from "./Home/Home";
+import TDashboard from "./Dashboard/TDashboard";
+import SDashboard from "./Dashboard/SDashboard";
 import "./App.css";
 
 import "./Register/Register.css";
@@ -23,12 +24,14 @@ import {
 
   render(){
     return(
-    <div>  <Navbar></Navbar>
+    <div>  
         <BrowserRouter>
              <Routes>
              <Route path="/" element={<Home/>}/>
              <Route path="/register" element={<Register/>}/>
              <Route path="/login" element={<Login/>}/>
+             <Route path="/sdashboard" element={<SDashboard/>}/>
+             <Route path="/tdashboard" element={<TDashboard/>}/>
              </Routes>
         </BrowserRouter>
 
