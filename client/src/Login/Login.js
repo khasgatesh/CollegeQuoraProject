@@ -62,8 +62,9 @@ export default class Login extends React.Component {
       return(
       <Navigate to = {"/register"}/> )
     }
-    else{
-      <Navigate to ={"/"}/> 
+    else if(this.state.roleId === "TEACHER"){
+      return(
+      <Navigate to ={"/"}/> )
       }
 
 
