@@ -22,5 +22,6 @@ public class Question {
  private String quesDate;
  private boolean questate;
  private String subId;
- private String userId;  
+ private String userId; 
+ private String deptId; 
 }

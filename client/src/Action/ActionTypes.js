@@ -9,3 +9,6 @@ export const USER_LOGIN = "login"
 export const USER_LOGOUT = "userLogout"
 export const USER_UPDATE_TOKEN = "updateToken"
 
+export const POST_QUESTION = "postquestion"
+export const GET_QUESTIONS = "getquestions"
+export const POST_ANSWER = "postanswer"

@@ -25,7 +25,7 @@ import {
   render(){
     return(
     <div>  
-        <BrowserRouter>
+      
              <Routes>
              <Route path="/" element={<Home/>}/>
              <Route path="/register" element={<Register/>}/>
@@ -33,7 +33,7 @@ import {
              <Route path="/sdashboard" element={<SDashboard/>}/>
              <Route path="/tdashboard" element={<TDashboard/>}/>
              </Routes>
-        </BrowserRouter>
+
 
         </div>
       

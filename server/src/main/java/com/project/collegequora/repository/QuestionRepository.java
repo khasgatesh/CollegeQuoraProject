@@ -11,5 +11,7 @@ public interface QuestionRepository extends MongoRepository <Question,String>{
    List<Question> findAllBySubId(String subId);
 
    List<Question> findByquesId(String quesId);
+
+List<Question> findAllByDeptId(String deptId);
     
 }

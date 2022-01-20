@@ -7,7 +7,8 @@ export default function UserReducer(state={},action)
         case actionType.USER_LOGIN: return {
                                 ...state, loginstatus:true,
                                 token : action.payload.token,
-                                email : action.payload.email
+                                email : action.payload.email,
+                                deptId : action.payload.deptId
                                 }
         case actionType.USER_LOGOUT: return {
                                 ...state, loginstatus:false,

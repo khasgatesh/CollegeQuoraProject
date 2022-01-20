@@ -4,7 +4,9 @@ export const ACTION_USER_LOGIN= {
     type : actionType.USER_LOGIN,
     payload : {       
        
-        email: undefined
+        email: undefined,
+        deptId: undefined
+
     }
 }
 export const ACTION_USER_LOGOUT = {

@@ -2,7 +2,7 @@ import React from "react";
 import "./Login.css";
 import Store from '../Action/Store';
 import { ACTION_USER_LOGIN } from '../Action/UserAction'
-import { Navigate} from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import Navbar from "../Navbar/Navbar";
 //import email from "../GlobalData/email";
 
@@ -44,7 +44,8 @@ export default class Login extends React.Component {
 
         Store.dispatch({
           ...ACTION_USER_LOGIN, payload: {
-            email: data.email,
+            email: data.data[2],
+            deptId:data.data[1],
             token: data.token
 
           }
@@ -60,15 +61,29 @@ export default class Login extends React.Component {
   }
 
   render() {
-    if(this.state.roleId === "STUDENT"){
+   if(this.state.roleId === "STUDENT"){
       return(
-      <Navigate to = {"/sdashboard"}/> )
+    <Navigate to = {"/sdashboard"}/> )
     }
     else if(this.state.roleId === "TEACHER"){
       return(
       <Navigate to ={"/tdashboard"}/> )
       }
+//   <Navigate to={{
+//     pathname: "/tdashboard",
+//     search: "?utm=your+face",
+//     state: { referrer: this.state.roleId }
+//   }}
+//  />
 
+// <Route
+
+// path='/tdashboard'
+// render={(props) => (
+// <TDashboard {...props} />
+// )}
+
+// />
 
     return (
       <div> <Navbar></Navbar>

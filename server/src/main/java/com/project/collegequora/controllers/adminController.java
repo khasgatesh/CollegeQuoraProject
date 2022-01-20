@@ -11,6 +11,7 @@ import com.project.collegequora.response.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -67,5 +68,8 @@ List<Department> dept=departmentRepository.findAll();
 return new Response(200,"Fetched successfully", dept, "");
 }
 
-    
+@GetMapping("/getsubject/{deptId}")
+public Response getsub(@PathVariable String deptId){
+ return new Response(200,"subject fetched",subjectRepository.findAllByDeptId(deptId), "");
+}    
 }

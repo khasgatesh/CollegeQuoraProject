@@ -2,10 +2,10 @@ import React from "react";
 import "./Sidebar.css";
 import SidebarOptions from "../SideBarOptions/SidebarOptions";
 
-function Sidebar() {
+function Sidebar(props) {
   return (
     <div className="sidebar">
-      <SidebarOptions />
+      <SidebarOptions subjects={props.subjects}/>
     </div>
   );
 }

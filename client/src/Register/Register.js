@@ -8,7 +8,8 @@ export default class Register extends React.Component{
         super()
          this.state = {
             regmsg : '',
-            loginmsg : ''
+            loginmsg : '',
+            subjects: [],
         }
     }
 

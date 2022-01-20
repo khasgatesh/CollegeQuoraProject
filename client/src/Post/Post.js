@@ -52,7 +52,7 @@ function Post({ post }) {
         //user: user,
       };
       await axios
-        .post("/api/answers", body, config)
+        .post("http://localhost:8082/web/postquestion", body, config)
         .then((res) => {
           console.log(res.data);
           alert("Answer added succesfully");
@@ -67,8 +67,6 @@ function Post({ post }) {
   return (
     <div className="post">
       <div className="post__info">
-        
-        <h4>{post?.user?.userName}</h4>
 
         <small>
           <LastSeen date={post?.createdAt} />
@@ -76,7 +74,6 @@ function Post({ post }) {
       </div>
       <div className="post__body">
         <div className="post__question">
-          <p>{post?.questionName}</p>
           <button
             onClick={() => {
               setIsModalOpen(true);

@@ -115,7 +115,7 @@ public class WebController
 				String od=newUser.getDeptId();
 				System.out.println(od);
 			}
-
+            
 			List<String> obj1 = new ArrayList<>();
 			obj1.add(newUser.getRoleId());
 			obj1.add(newUser.getDeptId());

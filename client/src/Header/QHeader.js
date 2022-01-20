@@ -8,6 +8,7 @@ import {
  PeopleAltOutlined,
  Search,
  ExpandMore,
+ ExitToAppOutlined,
 } from "@material-ui/icons";
 //import CloseIcon from "@material-ui/icons/Close";
 import { Avatar, Button, Input } from "@material-ui/core";
@@ -17,7 +18,7 @@ function QHeader(){
  return (
  <div className="qHeader">
  <div className="qHeader-content">
- <div className="qHeader__logo">
+ <div className="qHeader__logo" >
  <img
  src="https://video-public.canva.com/VAD8lt3jPyI/v/ec7205f25c.gif"
  alt="logo"
@@ -35,10 +36,7 @@ function QHeader(){
  </div>
  <div className="qHeader__icon">
  <PeopleAltOutlined />
- </div>
- <div className="qHeader__icon">
- <NotificationsOutlined />
- </div>
+ 
  </div>
  <div className="qHeader__input">
  <Search />
@@ -47,6 +45,10 @@ function QHeader(){
  <div className="qHeader__Rem">
  
  <Avatar/>
+ </div>
+ <div className="qHeader__icon">
+ <ExitToAppOutlined />
+ </div>
  
  </div>
  </div>
