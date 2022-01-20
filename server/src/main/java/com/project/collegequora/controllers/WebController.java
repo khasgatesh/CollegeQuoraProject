@@ -72,15 +72,15 @@ public class WebController
 	public Response saveUser(@RequestBody SystemUser user) 
 	{
 		if(systemUserRepository.existsByEmail(user.getEmail())){
-			return new Response(400,"already a user",null);
+			return new Response(400,"already a user",null, "");
 		}
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
 		SendVerifyMail(user.getName(),user.getEmail(),121);
 		SystemUser newUser = systemUserRepository.save(user);
 		if (newUser == null)
-			return new Response(400,"already a user",null);
+			return new Response(400,"already a user",null, " ");
 		else
-            return  new Response(200, "registration successfull",subjectRepository.findAllByDeptId(user.getDeptId()));
+            return  new Response(200, "registration successfull",subjectRepository.findAllByDeptId(user.getDeptId()),"");
 	}
 
 
@@ -94,7 +94,7 @@ public class WebController
 			 if(newUser.isActive()){
 			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword()));
 			String datais=systemUserDetailsService.getuserEmail(user);
-			String obj =newUser.getRoleId();
+			//String obj =newUser.getRoleId();
 		
 			final String token = jwtTokenUtil.generateToken(newUser);
 			//System.out.println("msg");
@@ -115,9 +115,14 @@ public class WebController
 				String od=newUser.getDeptId();
 				System.out.println(od);
 			}
+
+			List<String> obj1 = new ArrayList<>();
+			obj1.add(newUser.getRoleId());
+			obj1.add(newUser.getDeptId());
+			obj1.add(newUser.getEmail());
 			
 			
-			return ResponseEntity.ok(new JWTResponseData(true, token, "Login Successfull",obj));
+			return ResponseEntity.ok(new JWTResponseData(true, token, "Login Successfull",obj1));
 			//return ResponseEntity.ok(jwtResponseData);
 			//subjectRepository.findAllByDeptId(user.getDeptId())));
 		 }else{
@@ -163,6 +168,28 @@ public class WebController
         System.out.println(userdata);
         systemUserRepository.save(userdata);
         return "<h1>"+email+"</h1>";
+    }
+
+	@PostMapping("/logout")
+    public Response addUser(@RequestBody String logutstring)
+    {
+        System.out.println(logutstring);
+        return new Response(200,"Logout Sucessfully","logged out", "");
+    }
+
+    @GetMapping("/getuserbyemail/{token}")
+    public Response getuserbyemailid(@PathVariable String token)
+    {
+        
+        System.out.println(token);
+        try{
+        String id=jwtTokenUtil.getEmailFromToken(token);
+        SystemUser user=systemUserRepository.findById(id).get();
+        return new Response(200,"Token fetched",user.getEmail(),token);
+        }catch(Exception e){
+         return new Response(400,"Session Exprided","", "");
+        }
+       
     }
 
 	

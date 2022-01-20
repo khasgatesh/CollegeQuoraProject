@@ -8,6 +8,8 @@ public interface SystemUserRepository extends MongoRepository<SystemUser, String
 	public SystemUser findByEmail(String email);
 
     public boolean existsByEmail(String email);
+
+    public SystemUser getByEmail(String id);
 }
     
 

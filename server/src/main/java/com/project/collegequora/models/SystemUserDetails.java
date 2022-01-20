@@ -38,7 +38,7 @@ public class SystemUserDetails implements UserDetails {
 
 	@Override
 	public String getUsername() {		
-		return user.getName();
+		return user.getEmail();
 	}
 	 
 	public String getUserId() {
@@ -51,6 +51,7 @@ public class SystemUserDetails implements UserDetails {
 	public boolean active(){
 		return user.isActive();
 	}
+
 
 	@Override
 	public boolean isAccountNonExpired() {

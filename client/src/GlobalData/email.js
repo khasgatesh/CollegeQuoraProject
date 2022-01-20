@@ -1,2 +1,2 @@
 var email = undefined
-export default Email
+export default email

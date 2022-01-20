@@ -41,13 +41,13 @@ public class SubjectController {
 
     @GetMapping("/getquestion/{subId}")
     public Response getallques(@PathVariable String subId) {
-        return new Response(200,"question fetched",questionRepository.findAllBySubId(subId));
+        return new Response(200,"question fetched",questionRepository.findAllBySubId(subId), "");
         
     }
 
     @GetMapping("/answer/{quesId}")
     public Response getanswer(@PathVariable String quesId){
-        return new Response(200,"Answer fetched",answerRepository.findByQuesId(quesId));
+        return new Response(200,"Answer fetched",answerRepository.findByQuesId(quesId), "");
     }
 
 

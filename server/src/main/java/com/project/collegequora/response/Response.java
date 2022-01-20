@@ -15,4 +15,5 @@ public class Response {
     private int code;
     private String message;
     private Object data;
+    private String token;
 }

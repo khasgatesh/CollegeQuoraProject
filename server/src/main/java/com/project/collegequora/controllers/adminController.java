@@ -36,12 +36,12 @@ public class adminController {
             List<Subject>  data =subjectRepository.findAll();
             for(Subject sub:data){
                 if(sub.getSubId().equals(subject.getSubId())){
-                    return new Response(400,"already exits",sub);
+                    return new Response(400,"already exits",sub, "");
                 }
             }
         }
         subjectRepository.save(subject);
-        return new Response(200,"saved sucessful",subject);
+        return new Response(200,"saved sucessful",subject, "");
 
     }
 
@@ -52,19 +52,19 @@ if(departmentRepository.count()>0){
 List<Department> data = departmentRepository.findAll();
 for(Department dept: data){
 if(dept.getDeptId().equals(department.getDeptId())){
-return new Response(400,"Department Id Already exists",dept);
+return new Response(400,"Department Id Already exists",dept, "");
 }
 }
 } 
 departmentRepository.save(department);
-return new Response(200,"Department saved Successfully", "");
+return new Response(200,"Department saved Successfully", "", "");
 }
 
 @GetMapping("/findDepartments")
 public Response findUser()
 {
 List<Department> dept=departmentRepository.findAll();
-return new Response(200,"Fetched successfully", dept);
+return new Response(200,"Fetched successfully", dept, "");
 }
 
     

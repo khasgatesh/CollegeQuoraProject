@@ -4,7 +4,7 @@ import Store from '../Action/Store';
 import { ACTION_USER_LOGIN } from '../Action/UserAction'
 import { Navigate} from 'react-router-dom';
 import Navbar from "../Navbar/Navbar";
-import email from "../GlobalData/email";
+//import email from "../GlobalData/email";
 
 import {
   GoogleLoginButton,
@@ -35,7 +35,7 @@ export default class Login extends React.Component {
       body: JSON.stringify(ob)
     }).then(response => response.json()).then(data => {
       console.log(data)
-      this.setState({ roleId: data.data }, () => {
+      this.setState({ roleId: data.data[0] }, () => {
         console.log("hey")
       })
 

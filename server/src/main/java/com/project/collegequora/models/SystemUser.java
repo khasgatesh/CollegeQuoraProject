@@ -26,8 +26,10 @@ public class SystemUser  {
 	private boolean  active;
 	private String deptId;
 	private String roleId;
+  
+    }
 	
-	}
+
 
 
 	
