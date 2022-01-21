@@ -42,7 +42,7 @@ export default class Register extends React.Component{
             body : JSON.stringify(ob)
         }).then(response=>response.json()).then(data=>{
             console.log(data)
-            this.setState({regmsg:data.data})
+            this.setState({subjects:data.data})
         });;
         console.log(ob)
         event.preventDefault()
