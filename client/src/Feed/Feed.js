@@ -41,7 +41,7 @@ function Feed() {
   }, []);
   return (
     <div className="feed">
-        
+            
            {questions && questions.map((post) => (
               <h3  key={post.question} >{post.question}
                  <h4>{ post.quesId==posts.quesId && posts.answer}</h4> 
