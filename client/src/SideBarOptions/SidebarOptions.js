@@ -1,5 +1,6 @@
 import { Add } from "@material-ui/icons";
 import React from "react";
+import Post from "../Post/Post";
 import "./SidebarOptions.css";
 
 function SidebarOptions(props) {
@@ -14,11 +15,14 @@ function SidebarOptions(props) {
               alt=""
             />
             <p >{data.subName}</p>
+            <textarea type="text" placeholder="Enter your question or link"/>
           </div>
       </div>
       );
     })}
+ 
     </div>
+    
   )
   // return (
   //   <div className="sidebarOptions">

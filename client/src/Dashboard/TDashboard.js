@@ -4,8 +4,10 @@ import Sidebar from '../Sidebar/Sidebar'
 import Store from '../Action/Store'
 import {ACTION_USER_LOGOUT,ACTION_USER_UPDATE_TOKEN } from "../Action/UserAction"
 import {connect} from 'react-redux'
+import Post from '../Post/Post'
 //import Post from '../Post/Post'
-//import Feed from '../Feed/Feed'
+import Feed from '../Feed/Feed'
+import QuoraBox from '../QuoraBox/QuoraBox'
 
 var mapStateToProps = state => {
   return {
@@ -73,7 +75,9 @@ componentDidMount()
  <h2>{this.props.User.deptId}</h2>
  <div className="quora__contents">
         <div className="quora__content">
+        
           <Sidebar subjects={this.state.subjects}/>
+          
           </div>
           </div>
  </div>

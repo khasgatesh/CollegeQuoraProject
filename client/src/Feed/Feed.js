@@ -5,24 +5,53 @@ import Post from "../Post/Post";
 import axios from "axios";
 
 function Feed() {
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState();
+  const [questions,setQuestions] = useState([]);
+  var questionId=0
   useEffect(() => {
     axios
-      .get("/api/questions")
+      .get("http://localhost:8082/web/answer/61eae8cb7ea048306d0ff52f")
       .then((res) => {
-        console.log(res.data.reverse());
-        setPosts(res.data);
+        //console.log(res.data);
+        const { data } = res.data;
+       
+        console.log(data);
+        
+          setPosts(data);
+        
+       // setPosts([]);
       })
       .catch((e) => {
         console.log(e);
       });
+      axios
+      .get("http://localhost:8082/web/getquestions/CSE")
+      .then((res) => {
+        //console.log(res.data);
+        const { data } = res.data;
+        console.log(data)
+        setQuestions(data);
+      
+      
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+
+      
+    
   }, []);
   return (
     <div className="feed">
-      <QuoraBox />
-      {posts.map((post, index) => (
-        <Post key={index} post={post} />
-      ))}
+        
+           {questions && questions.map((post) => (
+              <h3  key={post.question} >{post.question}
+                 <h4>{ post.quesId==posts.quesId && posts.answer}</h4> 
+                 
+              </h3>
+             
+           ))}
+             
     </div>
   );
 }

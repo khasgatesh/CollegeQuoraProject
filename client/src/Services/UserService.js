@@ -20,6 +20,7 @@ class UserService
             body : JSON.stringify(data)
         })
     }
+
 }
 var obj = new UserService()
 export default obj;
