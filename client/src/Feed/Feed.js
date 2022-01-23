@@ -38,8 +38,6 @@ function Feed() {
         console.log(e);
       });
 
-      
-    
   }, []);
   return (
     <div className="feed">
@@ -47,7 +45,7 @@ function Feed() {
            {questions && questions.map((post) => (
               <h3  key={post.question} >{post.question}
                  <h4>{ post.quesId==posts.quesId && posts.answer}</h4> 
-                 
+
               </h3>
              
            ))}
